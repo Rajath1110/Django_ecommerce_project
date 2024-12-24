@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bg-light d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card p-4" style="width: 350px; background-color: #2c2c2c; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+        <h2 class="text-center text-white mb-4">Register</h2>
+        
+        <!-- Display Form Errors -->
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ field|capfirst }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <!-- Registration Form -->
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

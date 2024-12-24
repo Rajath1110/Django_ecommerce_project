@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bg-light d-flex justify-content-center align-items-center" style="height: 75vh;">
+    <div class="card p-4" style="width: 350px; background-color: #2c2c2c; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %} 
+        <div class="mb-3">
+            <label class="text-white">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter your username">
+            <div id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label class="text-white">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+

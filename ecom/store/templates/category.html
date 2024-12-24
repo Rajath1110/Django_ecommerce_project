@@ -5,14 +5,7 @@
 
     {% block content%}
     
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <p>{{ message }}</p>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
+        
 
  
 
@@ -20,16 +13,16 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Find all the products you need</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <h1 class="display-4 fw-bolder">{{category}}</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Category page</p>
                 </div>
             </div>
         </header>
 
         
-        <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
+                <h2 class="text-center mb-4">{{ category.name }}</h2>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     {% for product in products %}
                     <div class="col mb-5">
@@ -58,18 +51,18 @@
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
                                     <a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">Details</a>
-                                    
                                 </div>
-                                
-                                    
-                                
                             </div>
                         </div>
                     </div>
+                    {% empty %}
+                    <p class="text-center">No products found in this category.</p>
                     {% endfor %}
                 </div>
             </div>
         </section>
+        
+        
 
         {% endblock %}
         
